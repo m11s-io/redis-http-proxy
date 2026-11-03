@@ -11,8 +11,12 @@ on:
         type: boolean
         default: false
 
+permissions:
+  contents: read
+
 jobs:
   test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,6 +31,7 @@ jobs:
         run: go test ./...
 
   build:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
     needs: test
     permissions:
